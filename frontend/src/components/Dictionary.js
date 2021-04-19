@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import Entry from './Entry';
+import Result from './Result';
 
 function Dictionary() {
-    const [entries, setEntries] = useState([])
+    const [result, setResult] = useState([])
     const [word, setWord] = useState('')
 
     function searchWord() {
@@ -11,8 +11,8 @@ function Dictionary() {
             word: word
         })
             .then(res => {
-                console.log(res.data)
-                setEntries(res.data)
+                console.log([res.data[0].lexicalEntries[0]])
+                setResult([res.data[0].lexicalEntries[0]])
             })
             .catch(err => {
                 if(err) console.log(err)
@@ -23,7 +23,7 @@ function Dictionary() {
         <div>
             <input type='text' value={word} onChange={e => setWord(e.target.value)} />
             <button onClick={searchWord}>Search in dictionary</button>
-            {entries.map(entry => <Entry entry={entry} />)}
+            {result.map(r => <Result result={r} key={r.text}/>)}
         </div>
     )
 }

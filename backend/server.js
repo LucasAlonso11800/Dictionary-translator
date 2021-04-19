@@ -30,9 +30,5 @@ app.post('/', (req, res) => {
         .catch(err => console.log(err))
 });
 
-app.get('/', (req, res) => {
-    res.send('lol')
-})
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
