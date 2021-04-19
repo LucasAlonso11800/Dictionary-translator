@@ -1,25 +1,33 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors')
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
 
 app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 const BASE_URL = 'https://od-api.oxforddictionaries.com/api/v2'
 const APP_ID = process.env.APP_ID;
 const APP_KEY = process.env.APP_KEY;
 
 app.post('/', (req, res) => {
-    axios.get(`${BASE_URL}/entries/en-gb/example`, {
+    const word = req.body.word;
+
+    const options = {
+        method: 'GET',
+        url: `${BASE_URL}/entries/en-gb/${word}`,
         headers: {
             'app_id': APP_ID,
             'app_key': APP_KEY
         }
-    })
-    .then(data => res.json(data.data.results))
-    .catch(err => console.log(err))
+    }
+    axios.request(options)
+        .then(data => res.json(data.data.results))
+        .catch(err => console.log(err))
 });
 
 app.get('/', (req, res) => {
