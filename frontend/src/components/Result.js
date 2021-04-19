@@ -4,7 +4,7 @@ function Result({ result }) {
     const entries = result.entries;
     const phrases = result.phrases;
     const category = result.lexicalCategory;
-    console.log(Array.isArray(entries[0].senses[0].synonyms))
+    
     return (
         <div>
             {entries.map(entry => {
