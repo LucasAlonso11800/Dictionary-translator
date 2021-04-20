@@ -18,7 +18,6 @@ function Translation() {
 
         axios.get(`https://api.mymemory.translated.net/get?q=${text}&langpair=${fromLanguage}|${toLanguage}`)
             .then(res => {
-                console.log(res.data.matches[0])
                 setTranslatedText(res.data.matches[0])
             })
             .catch(err => err ? console.log(err) : '')
