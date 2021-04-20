@@ -10,7 +10,7 @@ function Navbar() {
                 <img src={Logo} alt='Dictionary logo' className='nav-logo' />
                 <div className='nav-text'>
                     <Link to='/' className='nav-link'>OXFORD DICTIONARY</Link>
-                    <Link to='/translation' className='nav-link'>ENG-ES TRANSLATOR</Link>
+                    <Link to='/translation' className='nav-link'>TRANSLATOR</Link>
                 </div>
             </nav>
         </header>

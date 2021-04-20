@@ -3,13 +3,24 @@ import axios from 'axios'
 
 function Translation() {
     const [text, setText] = useState('');
-    const [translatedTexts, setTranslatedTexts] = useState([])
-    const [fromLanguage, setFromLanguage] = useState('en')
-    const [toLanguage, setToLanguage] = useState('es')
+    const [translatedText, setTranslatedText] = useState({});
+    const [fromLanguage, setFromLanguage] = useState('en');
+    const [toLanguage, setToLanguage] = useState('es');
+
+    function capitalize(word) {
+        const firstLetter = word.substring(0, 1).toUpperCase();
+        const rest = word.substring(1);
+        return firstLetter + rest
+    };
 
     function translate() {
+        if(fromLanguage === toLanguage) return ''
+
         axios.get(`https://api.mymemory.translated.net/get?q=${text}&langpair=${fromLanguage}|${toLanguage}`)
-            .then(res => setTranslatedTexts(res.data.matches[0]))
+            .then(res => {
+                console.log(res.data.matches[0])
+                setTranslatedText(res.data.matches[0])
+            })
             .catch(err => err ? console.log(err) : '')
     }
 
@@ -21,12 +32,20 @@ function Translation() {
                     onChange={e => setFromLanguage(e.target.value)}>
                     <option value='en'>English</option>
                     <option value='es'>Spanish</option>
+                    <option value='ge'>German</option>
+                    <option value='it'>Italian</option>
+                    <option value='fr'>French</option>
+                    <option value='pt'>Portuguese</option>
                 </select>
                 <select
                     className='translation-option'
                     onChange={e => setToLanguage(e.target.value)}>
                     <option value='es'>Spanish</option>
                     <option value='en'>English</option>
+                    <option value='de'>German</option>
+                    <option value='it'>Italian</option>
+                    <option value='fr'>French</option>
+                    <option value='pt'>Portuguese</option>
                 </select>
                 <button
                     className='translation-option'
@@ -39,18 +58,16 @@ function Translation() {
                 onChange={e => setText(e.target.value)}
                 maxLength='500'
             ></textarea>
-            {translatedTexts !== [] ?
+            {translatedText !== {} ?
                 <>
                     <h2 className='translation-subtitle'>Results:</h2>
-                    {translatedTexts.map(text => {
-                        return <textarea
+                    <textarea
                             className='translation'
-                            key={text.translation}
-                            value={text.translation}
+                            key={translatedText.translation}
+                            value={translatedText.translation ? capitalize(translatedText.translation) : ''}
                             onChange={() => { }}
                         >
                         </textarea>
-                    })}
                 </>
                 : <></>}
         </div>

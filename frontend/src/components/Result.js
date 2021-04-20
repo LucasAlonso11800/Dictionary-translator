@@ -19,7 +19,7 @@ function Result({ result }) {
                     <div className='entry-content' key={entry.text}>
                         {entry.senses.map(sense => {
                             return (
-                                <div className='entry-main'>
+                                <div className='entry-main' key={sense.definitions[0]}>
                                     <p className='definition'><b>Definition: </b>{capitalize(sense.definitions[0])}</p>
                                     <div className='word-data'>
                                         <p className='etimology'><b>Etimology: </b>{entry.etymologies}</p>
