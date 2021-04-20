@@ -5,10 +5,12 @@ import Result from './Result';
 function Dictionary() {
     const [results, setResults] = useState([])
     const [word, setWord] = useState('')
+    const [language, setLanguage] = useState('en-gb')
 
     function searchWord() {
         axios.post('http://localhost:5000', {
-            word
+            word,
+            language
         })
             .then(res => {
                 setResults(res.data[0].lexicalEntries)
@@ -23,17 +25,24 @@ function Dictionary() {
             <div className='search'>
                 <input
                     className='search-input'
-                    placeholder='Enter a word to look for'
+                    placeholder={language === 'en-gb' ? 'Enter a word to look for' : 'Ingresa una palabra para buscarla'}
                     type='text' value={word}
                     onChange={e => setWord(e.target.value)} />
+                <select
+                    className='search-lang'
+                    onChange={e => setLanguage(e.target.value)}>
+                    <option value='en-gb'>English</option>
+                    <option value='es'>Spanish</option>
+                </select>
                 <button className='search-button'
                     onClick={searchWord}>
                     Search in dictionary
-                    </button>
+                </button>
             </div>
             <div className='result'>
                 {results.map(r => {
-                    return <Result result={r} key={r.text + r.lexicalCategory.text} />})}
+                    return <Result result={r} key={r.text + r.lexicalCategory.text} />
+                })}
             </div>
         </main>
     )

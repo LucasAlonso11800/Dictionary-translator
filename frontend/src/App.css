@@ -10,7 +10,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #ffffff;
     font-family: 'PT Sans';
 }
 
@@ -27,6 +26,7 @@
 .header{
     background-color: var(--oxfordBlue);
     font-family: 'Lato';
+    color: #ffffff;
 }
 .nav{
     padding: 0.5em;
@@ -61,11 +61,15 @@
     padding: 0.5em;
     color: var(--oxfordBlue);
 }
+.search-lang{
+    color: var(--oxfordBlue);
+}
 .search-button{
     width: 20%;
     padding: 0.5em;
     color: var(--oxfordBlue);
     font-weight: bold;
+    border: none;
 }
 
 /* RESULTS */
@@ -73,6 +77,7 @@
 .entry{
     margin: 0.5em;
     padding: 0.5em;
+    color: #ffffff;
 }
 
 .entry-title{
@@ -82,7 +87,7 @@
 }
 
 .entry-main{
-    padding: 0.5em 0;    
+    padding: 1em 0;    
     border-bottom: 1px solid #000000;
 }
 .subtitle{

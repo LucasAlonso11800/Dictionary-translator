@@ -23,12 +23,14 @@ function Result({ result }) {
                                     <p className='definition'><b>Definition: </b>{capitalize(sense.definitions[0])}</p>
                                     <div className='word-data'>
                                         <p className='etimology'><b>Etimology: </b>{entry.etymologies}</p>
-                                        <div className='word-fonetic'>
-                                            <p><b>Pronunciation:</b> {entry.pronunciations[0].phoneticSpelling}</p>
-                                            <audio controls='on'>
-                                                <source src={entry.pronunciations[0].audiofile}></source>
-                                            </audio>
-                                        </div>
+                                        {entry.pronunciation ?
+                                            <div className='word-fonetic'>
+                                                <p><b>Pronunciation:</b> {entry.pronunciations[0].phoneticSpelling}</p>
+                                                <audio controls='on'>
+                                                    <source src={entry.pronunciations[0].audiofile}></source>
+                                                </audio>
+                                            </div>
+                                            : ''}
                                     </div>
                                     <div className='word-use'>
                                         <div className='synonyms'>
@@ -42,7 +44,7 @@ function Result({ result }) {
                                                         return undefined
                                                     })
                                                     .map(s => <p key={s.text}>{capitalize(s.text)}</p>) :
-                                                <></>}
+                                                <p>No synonyms found</p>}
                                         </div>
                                         <div className='examples'>
                                             <p className='subtitle'>Examples:</p>

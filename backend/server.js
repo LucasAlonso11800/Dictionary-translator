@@ -16,10 +16,10 @@ const APP_KEY = process.env.APP_KEY;
 
 app.post('/', (req, res) => {
     const word = req.body.word;
-
+    const language = req.body.language
     const options = {
         method: 'GET',
-        url: `${BASE_URL}/entries/en-gb/${word}`,
+        url: `${BASE_URL}/entries/${language}/${word}`,
         headers: {
             'app_id': APP_ID,
             'app_key': APP_KEY
