@@ -26,9 +26,6 @@ function Result({ result }) {
                                         {entry.pronunciation ?
                                             <div className='word-fonetic'>
                                                 <p><b>Pronunciation:</b> {entry.pronunciations[0].phoneticSpelling}</p>
-                                                <audio controls='on'>
-                                                    <source src={entry.pronunciations[0].audiofile}></source>
-                                                </audio>
                                             </div>
                                             : ''}
                                     </div>
