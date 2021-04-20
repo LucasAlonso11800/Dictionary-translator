@@ -16,10 +16,10 @@ function Result({ result }) {
             <h2 className='entry-title'>{capitalize(result.text)} - {category}</h2>
             {entries.map(entry => {
                 return (
-                    <div className='entry-content' key={entry.text}>
+                    <div className='entry-content'>
                         {entry.senses.map(sense => {
                             return (
-                                <div className='entry-main' key={sense.definitions[0]}>
+                                <div className='entry-main' key={sense.id}>
                                     <p className='definition'><b>Definition: </b>{capitalize(sense.definitions[0])}</p>
                                     <div className='word-data'>
                                         <p className='etimology'><b>Etimology: </b>{entry.etymologies}</p>

@@ -65,11 +65,12 @@
     display: flex;
 }
 .search-input{
-    width: 80%;
+    width: 60%;
     padding: 0.5em;
     color: var(--oxfordBlue);
 }
 .search-lang{
+    width: 20%;
     color: var(--oxfordBlue);
 }
 .search-button{
@@ -78,6 +79,22 @@
     color: var(--oxfordBlue);
     font-weight: bold;
     border: none;
+}
+
+@media all and (max-width: 510px){
+    .search{
+        flex-wrap: wrap;
+    }
+    .search-input{
+        width: 60%;
+    }
+    .search-lang{
+        width: 40%;
+    }
+    .search-button{
+        display: block;
+        width: 100%;
+    }
 }
 
 /* DICTIONARY */
@@ -96,8 +113,9 @@
 
 .entry-main{
     padding: 1em 0;    
-    border-bottom: 1px solid #000000;
+    border-bottom: 2px solid #ffffff;
 }
+
 .subtitle{
     font-weight: bold;
 }
@@ -116,17 +134,44 @@
 .examples{
     width: 40%;
 }
+
+@media all and (max-width: 400px){
+    .word-use{
+        flex-direction: column;
+    }
+    .synonyms{
+        width: 100%;
+        margin: 0.5em 0;
+    }
+    .examples{
+        width: 100%;
+        margin: 0.5em 0;
+    }
+}
 .word-data{
     display: flex;
     justify-content: space-between;
     align-content: center;
     padding: 0.5em 0;    
 }
+
 .etimology{
     width: 40%;
 }
 .word-fonetic{
     width: 40%;
+}
+
+@media all and (max-width: 700px){
+    .word-data{
+        flex-direction: column;
+    }
+    .etimology{
+        width: 100%;
+    }
+    .word-fonetic{
+        width: 100%;
+    }
 }
 
 /* TRANSLATIONS */
