@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=PT+Sans:wght@400;700&display=swap');
 
+:root{
+    --oxfordBlue: #002147;
+    --oxfordBlueT: rgba(0, 33, 71, 0.7);
+    --textShadow: 0px 5px 5px #000000;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -16,8 +22,10 @@
     background-attachment: fixed;
 }
 
+/* NAV */
+
 .header{
-    background-color: #002147;
+    background-color: var(--oxfordBlue);
     font-family: 'Lato';
 }
 .nav{
@@ -34,5 +42,76 @@
     margin-right: 2em;
 }
 .nav-text{
-    text-shadow: 0px 5px 5px #000000;
+    text-shadow: var(--textShadow);
+}
+
+/* SEARCH */
+
+.container{
+    background-color: var(--oxfordBlueT);
+    padding: 2em;
+    margin: 2em auto 0;
+    width: 80%;
+}
+.search{
+    display: flex;
+}
+.search-input{
+    width: 80%;
+    padding: 0.5em;
+    color: var(--oxfordBlue);
+}
+.search-button{
+    width: 20%;
+    padding: 0.5em;
+    color: var(--oxfordBlue);
+    font-weight: bold;
+}
+
+/* RESULTS */
+
+.entry{
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.entry-title{
+    font-size: 1.75rem;
+    margin-bottom: 0.5em;
+    text-shadow: var(--textShadow);
+}
+
+.entry-main{
+    padding: 0.5em 0;    
+    border-bottom: 1px solid #000000;
+}
+.subtitle{
+    font-weight: bold;
+}
+.definition{
+    margin-bottom: 0.5em 0;
+    width: 100%;
+}
+.word-use{
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+.synonyms{
+    width: 40%;
+}
+.examples{
+    width: 40%;
+}
+.word-data{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 0.5em 0;    
+}
+.etimology{
+    width: 40%;
+}
+.word-fonetic{
+    width: 40%;
 }

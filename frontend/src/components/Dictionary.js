@@ -3,28 +3,39 @@ import axios from 'axios'
 import Result from './Result';
 
 function Dictionary() {
-    const [result, setResult] = useState([])
+    const [results, setResults] = useState([])
     const [word, setWord] = useState('')
 
     function searchWord() {
         axios.post('http://localhost:5000', {
-            word: word
+            word
         })
             .then(res => {
-                console.log([res.data[0].lexicalEntries[0]])
-                setResult([res.data[0].lexicalEntries[0]])
+                setResults(res.data[0].lexicalEntries)
             })
             .catch(err => {
-                if(err) console.log(err)
+                if (err) console.log(err)
             })
     };
 
     return (
-        <div>
-            <input type='text' value={word} onChange={e => setWord(e.target.value)} />
-            <button onClick={searchWord}>Search in dictionary</button>
-            {result.map(r => <Result result={r} key={r.text}/>)}
-        </div>
+        <main className='container'>
+            <div className='search'>
+                <input
+                    className='search-input'
+                    placeholder='Enter a word to look for'
+                    type='text' value={word}
+                    onChange={e => setWord(e.target.value)} />
+                <button className='search-button'
+                    onClick={searchWord}>
+                    Search in dictionary
+                    </button>
+            </div>
+            <div className='result'>
+                {results.map(r => {
+                    return <Result result={r} key={r.text + r.lexicalCategory.text} />})}
+            </div>
+        </main>
     )
 }
 
