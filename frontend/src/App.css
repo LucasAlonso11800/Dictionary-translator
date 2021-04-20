@@ -42,7 +42,15 @@
     margin-right: 2em;
 }
 .nav-text{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
     text-shadow: var(--textShadow);
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 /* SEARCH */
@@ -72,7 +80,7 @@
     border: none;
 }
 
-/* RESULTS */
+/* DICTIONARY */
 
 .entry{
     margin: 0.5em;
@@ -119,4 +127,31 @@
 }
 .word-fonetic{
     width: 40%;
+}
+
+/* TRANSLATIONS */
+
+.translation-options{
+    display: flex;
+}
+.translation-option{
+    flex-grow: 1;
+    padding: 0.5em;
+    font-weight: bold;
+    color: var(--oxfordBlue);
+}
+textarea{
+    resize: none;
+    width: 100%;
+    height: 5em;
+    margin-top: 1em;
+    padding: 0.5em;
+    color: var(--oxfordBlue);
+}
+.translation-subtitle{
+    color: #ffffff;
+    margin: 0.5em 0;
+}
+.translation{
+    display: block;
 }

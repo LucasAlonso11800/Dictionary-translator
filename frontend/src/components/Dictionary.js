@@ -21,7 +21,7 @@ function Dictionary() {
     };
 
     return (
-        <main className='container'>
+        <div className='container'>
             <div className='search'>
                 <input
                     className='search-input'
@@ -44,7 +44,7 @@ function Dictionary() {
                     return <Result result={r} key={r.text + r.lexicalCategory.text} />
                 })}
             </div>
-        </main>
+        </div>
     )
 }
 

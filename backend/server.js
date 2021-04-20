@@ -16,7 +16,8 @@ const APP_KEY = process.env.APP_KEY;
 
 app.post('/', (req, res) => {
     const word = req.body.word;
-    const language = req.body.language
+    const language = req.body.language;
+
     const options = {
         method: 'GET',
         url: `${BASE_URL}/entries/${language}/${word}`,
@@ -25,6 +26,7 @@ app.post('/', (req, res) => {
             'app_key': APP_KEY
         }
     }
+    
     axios.request(options)
         .then(data => res.json(data.data.results))
         .catch(err => console.log(err))
