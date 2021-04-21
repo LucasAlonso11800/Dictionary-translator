@@ -53,6 +53,7 @@ function Translation() {
             </div>
             <textarea
                 placeholder='Enter your text to translate (maximun length: 500 characters)'
+                spellCheck='false'
                 value={text}
                 onChange={e => setText(e.target.value)}
                 maxLength='500'
