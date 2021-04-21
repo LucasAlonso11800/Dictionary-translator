@@ -8,7 +8,7 @@ function Dictionary() {
     const [language, setLanguage] = useState('en-gb')
 
     function searchWord() {
-        axios.post('http://localhost:5000', {
+        axios.post('https://dictionary-translator-app.herokuapp.com/', {
             word,
             language
         })
