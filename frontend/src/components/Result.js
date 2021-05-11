@@ -1,8 +1,9 @@
 import React from 'react';
+import Sense from './Sense';
 import capitalize from './capitalizeFunction';
 
 function Result({ result }) {
-    const entries = result.entries;
+    const { entries } = result;
     const category = result.lexicalCategory.text;
 
     return (
@@ -11,45 +12,12 @@ function Result({ result }) {
             {entries.map(entry => {
                 return (
                     <div className='entry-content'>
-                        {entry.senses.map(sense => {
-                            return (
-                                <div className='entry-main' key={sense.id}>
-                                    <p className='definition'><b>Definition: </b>{capitalize(sense.definitions[0])}</p>
-                                    <div className='word-data'>
-                                        <p className='etimology'><b>Etimology: </b>{entry.etymologies}</p>
-                                        {entry.pronunciation ?
-                                            <div className='word-fonetic'>
-                                                <p><b>Pronunciation:</b> {entry.pronunciations[0].phoneticSpelling}</p>
-                                            </div>
-                                            : ''}
-                                    </div>
-                                    <div className='word-use'>
-                                        <div className='synonyms'>
-                                            <p className='subtitle'>Synonyms:</p>
-                                            {sense.synonyms !== undefined ?
-                                                sense.synonyms
-                                                    .filter(el => {
-                                                        if (sense.synonyms.indexOf(el) < 5) {
-                                                            return el
-                                                        }
-                                                        return undefined
-                                                    })
-                                                    .map(s => <p key={s.text}>{capitalize(s.text)}</p>) :
-                                                <p>No synonyms found</p>}
-                                        </div>
-                                        <div className='examples'>
-                                            <p className='subtitle'>Examples:</p>
-                                            {sense.examples !== undefined ? sense.examples.map(example => <p key={example.text}>{capitalize(example.text)}</p>) : <p>No examples found</p>}
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                        {entry.senses.map(sense => <Sense sense={sense} entry={entry} key={sense.id}/>)}
                     </div>
                 )
             })}
         </div>
     )
-}
+};
 
-export default Result
+export default Result;
