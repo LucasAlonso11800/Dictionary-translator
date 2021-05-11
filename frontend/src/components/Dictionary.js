@@ -12,9 +12,7 @@ function Dictionary() {
             word,
             language
         })
-            .then(res => {
-                setResults(res.data[0].lexicalEntries)
-            })
+            .then(res => setResults(res.data[0].lexicalEntries))
             .catch(err => {
                 if (err) console.log(err)
             })
