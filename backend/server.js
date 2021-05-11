@@ -1,14 +1,13 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors')
-const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
 
 app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 const BASE_URL = 'https://od-api.oxforddictionaries.com/api/v2'
 const APP_ID = process.env.APP_ID;
