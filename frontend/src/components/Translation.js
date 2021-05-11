@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react';
+import axios from 'axios';
+import capitalize from './capitalizeFunction';
 
 function Translation() {
     const [text, setText] = useState('');
@@ -7,21 +8,15 @@ function Translation() {
     const [fromLanguage, setFromLanguage] = useState('en');
     const [toLanguage, setToLanguage] = useState('es');
 
-    function capitalize(word) {
-        const firstLetter = word.substring(0, 1).toUpperCase();
-        const rest = word.substring(1);
-        return firstLetter + rest
-    };
-
     function translate() {
-        if(fromLanguage === toLanguage) return ''
+        if(fromLanguage === toLanguage) return
 
         axios.get(`https://api.mymemory.translated.net/get?q=${text}&langpair=${fromLanguage}|${toLanguage}`)
-            .then(res => {
-                setTranslatedText(res.data.matches[0])
+            .then(res => setTranslatedText(res.data.matches[0]))
+            .catch(err => {
+                if (err) console.log(err)
             })
-            .catch(err => err ? console.log(err) : '')
-    }
+    };
 
     return (
         <div className='container'>
@@ -49,10 +44,11 @@ function Translation() {
                 <button
                     className='translation-option'
                     onClick={translate}>
-                    Translate</button>
+                    Translate
+                </button>
             </div>
             <textarea
-                placeholder='Enter your text to translate (maximun length: 500 characters)'
+                placeholder='Enter your text to translate (maximum length: 500 characters)'
                 spellCheck='false'
                 value={text}
                 onChange={e => setText(e.target.value)}

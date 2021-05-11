@@ -1,13 +1,7 @@
-import React from 'react'
+import React from 'react';
+import capitalize from './capitalizeFunction';
 
 function Result({ result }) {
-
-    function capitalize(word) {
-        const firstLetter = word.substring(0, 1).toUpperCase();
-        const rest = word.substring(1);
-        return firstLetter + rest
-    };
-
     const entries = result.entries;
     const category = result.lexicalCategory.text;
 
